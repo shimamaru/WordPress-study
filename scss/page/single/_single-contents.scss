@@ -1,0 +1,28 @@
+@use "../../global" as g;
+
+/*!
+page > single > single-contents
+------------------------------
+*/
+.single-contents {
+    margin-top: 40px;
+    line-height: 2;
+
+    @include g.mq() {
+        margin-top: 48px;
+    }
+
+    > * {
+        &:first-child {
+            margin-top: 0 !important;
+        }
+
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    p:not([class]) {
+        margin: 24px 0;
+    }
+}

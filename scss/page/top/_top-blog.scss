@@ -1,0 +1,28 @@
+@use "../../global" as g;
+
+/*!
+page > top > top-blog
+------------------------------
+*/
+.top-blog {
+    &::before {
+        content: "";
+        display: block;
+        background-image: url(../img/bg-top-separate-sp.jpg);
+        background-image: image-set(url(../img/bg-top-separate-sp.jpg) 1x, url(../img/bg-top-separate-sp.jpg) 2x);
+        background-image: -webkit-image-set(url(../img/bg-top-separate-sp.jpg) 1x, url(../img/bg-top-separate-sp.jpg) 2x);
+        height: 0;
+        padding-top: 38%;
+        background-size: cover;
+        background-position: 100% 90%;
+
+        @include g.mq() {
+            background-image: url(../img/bg-top-separate.jpg);
+            background-image: image-set(url(../img/bg-top-separate.jpg) 1x, url(../img/bg-top-separate.jpg) 2x);
+            background-image: -webkit-image-set(url(../img/bg-top-separate.jpg) 1x, url(../img/bg-top-separate.jpg) 2x);
+            background-position: 100% 76%;
+            padding-top: 0;
+            height: 370px;
+        }
+    }
+}

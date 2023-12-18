@@ -1,0 +1,77 @@
+@use "../global" as g;
+
+/*!
+component > page-kv
+------------------------------
+*/
+.c-page-kv {
+    height: 360px;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+
+    @include g.mq() {
+        height: 460px;
+    }
+
+    &--consept {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-consept-kv-sp@2x.jpg);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-consept-kv-sp.jpg) 1x, url(../img/bg-consept-kv-sp@2x.jpg) 2x);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-consept-kv-sp.jpg) 1x, url(../img/bg-consept-kv-sp@2x.jpg) 2x);
+
+        @include g.mq() {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-consept-kv@2x.jpg);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-consept-kv.jpg) 1x, url(../img/bg-consept-kv@2x.jpg) 2x);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-consept-kv.jpg) 1x, url(../img/bg-consept-kv@2x.jpg) 2x);
+        }
+    }
+
+    &--menu {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-menu-kv-sp@2x.jpg);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-menu-kv-sp.jpg) 1x, url(../img/bg-menu-kv-sp@2x.jpg) 2x);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-menu-kv-sp.jpg) 1x, url(../img/bg-menu-kv-sp@2x.jpg) 2x);
+
+        @include g.mq() {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-menu-kv@2x.jpg);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-menu-kv.jpg) 1x, url(../img/bg-menu-kv@2x.jpg) 2x);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-menu-kv.jpg) 1x, url(../img/bg-menu-kv@2x.jpg) 2x);
+        }
+    }
+
+    &--shoplist {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-shoplist-kv-sp@2x.jpg);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-shoplist-kv-sp.jpg) 1x, url(../img/bg-shoplist-kv-sp@2x.jpg) 2x);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-shoplist-kv-sp.jpg) 1x, url(../img/bg-shoplist-kv-sp@2x.jpg) 2x);
+
+        @include g.mq() {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-shoplist-kv@2x.jpg);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-shoplist-kv.jpg) 1x, url(../img/bg-shoplist-kv@2x.jpg) 2x);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-shoplist-kv.jpg) 1x, url(../img/bg-shoplist-kv@2x.jpg) 2x);
+        }
+    }
+
+    &--blog {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-blog-kv-sp@2x.jpg);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-blog-kv-sp.jpg) 1x, url(../img/bg-blog-kv-sp@2x.jpg) 2x);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-blog-kv-sp.jpg) 1x, url(../img/bg-blog-kv-sp@2x.jpg) 2x);
+
+        @include g.mq() {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-blog-kv@2x.jpg);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-blog-kv.jpg) 1x, url(../img/bg-blog-kv@2x.jpg) 2x);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-blog-kv.jpg) 1x, url(../img/bg-blog-kv@2x.jpg) 2x);
+        }
+    }
+
+    &--error {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-error-kv-sp@2x.jpg);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-error-kv-sp.jpg) 1x, url(../img/bg-error-kv-sp@2x.jpg) 2x);
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-error-kv-sp.jpg) 1x, url(../img/bg-error-kv-sp@2x.jpg) 2x);
+
+        @include g.mq() {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), url(../img/bg-error-kv@2x.jpg);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), image-set(url(../img/bg-error-kv.jpg) 1x, url(../img/bg-error-kv@2x.jpg) 2x);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%), -webkit-image-set(url(../img/bg-error-kv.jpg) 1x, url(../img/bg-error-kv@2x.jpg) 2x);
+        }
+    }
+}

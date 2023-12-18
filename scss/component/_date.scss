@@ -1,0 +1,17 @@
+@use "../global" as g;
+
+/*!
+component > date
+------------------------------
+*/
+.c-date {
+    display: block;
+    color: var(--color-font-primary);
+    font-family: var(--font-family-english);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+
+    @include g.mq() {
+        font-size: 14px;
+    }
+}

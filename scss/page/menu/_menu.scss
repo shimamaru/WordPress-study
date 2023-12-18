@@ -1,0 +1,77 @@
+@use "../../global" as g;
+
+/*!
+page > menu > menu
+------------------------------
+*/
+.menu-head-text {
+    font-size: 16px;
+    text-align: center;
+
+    @include g.mq() {
+        font-size: 20px;
+    }
+}
+
+.menu-head-text02 {
+    text-align: center;
+    line-height: 2;
+    margin-top: 24px;
+
+    @include g.mq() {
+        margin-top: 32px;
+    }
+
+    span {
+        display: block;
+    }
+}
+
+.menu-item {
+    @include g.mq() {
+        display: flex;
+        align-items: center;
+    }
+
+    &:not(:first-child) {
+        margin-top: 40px;
+
+        @include g.mq() {
+            margin-top: 48px;
+        }
+    }
+}
+
+.menu-item-img {
+    @include g.mq() {
+        width: 30%;
+        max-width: 280px;
+        flex-shrink: 0;
+    }
+}
+
+.menu-item-info {
+    margin-top: 16px;
+
+    @include g.mq() {
+        margin-left: 48px;
+        margin-top: 0;
+    }
+}
+
+.menu-item-name {
+    font-size: 16px;
+
+    @include g.mq() {
+        font-size: 20px;
+    }
+}
+
+.menu-item-description {
+    line-height: 2;
+    margin-top: 8px;
+
+    @include g.mq() {
+        margin-top: 16px;
+    }
+}
