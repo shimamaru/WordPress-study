@@ -1,3 +1,12 @@
+<?php
+if (file_exists(__DIR__ . '/functions.php')) {
+    include(__DIR__ . '/functions.php');
+} else {
+    echo "functions.php ファイルが見つかりませんでした。";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -64,7 +73,7 @@
             class="header-link">shoplist</a>
         </li>
         <li class="header-item">
-          <a href="<?php echo esc_url(get_category_link(get_category_by_slug('blog&news')->term_id)); ?>"
+          <a href="<?php echo esc_url(get_category_link(get_category_by_slug('blog')->term_id)); ?>"
             class="header-link">blog&news</a>
         </li>
       </ul>
