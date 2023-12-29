@@ -5,68 +5,80 @@ page > top > top-menu
 ------------------------------
 */
 .top-menu {
-    background-image: url(../img/bg-top-menu-sp.jpg);
-    background-image: image-set(url(../img/bg-top-menu-sp.jpg) 1x, url(../img/bg-top-menu-sp.jpg) 2x);
-    background-image: -webkit-image-set(url(../img/bg-top-menu-sp.jpg) 1x, url(../img/bg-top-menu-sp.jpg) 2x);
-    background-position: center;
-    background-size: cover;
+  background-image: url(../img/bg-top-menu-sp.jpg);
+  background-image: image-set(
+    url(../../../img/bg-top-menu-sp.jpg) 1x,
+    url(../../../img/bg-top-menu-sp.jpg) 2x
+  );
+  background-image: -webkit-image-set(
+    url(../../../img/bg-top-menu-sp.jpg) 1x,
+    url(../../../img/bg-top-menu-sp.jpg) 2x
+  );
+  background-position: center;
+  background-size: cover;
 
-    @include g.mq() {
-        background-image: url(../img/bg-top-menu.jpg);
-        background-image: image-set(url(../img/bg-top-menu.jpg) 1x, url(../img/bg-top-menu.jpg) 2x);
-        background-image: -webkit-image-set(url(../img/bg-top-menu.jpg) 1x, url(../img/bg-top-menu.jpg) 2x);
-    }
+  @include g.mq() {
+    background-image: url(../../../img/bg-top-menu.jpg);
+    background-image: image-set(
+      url(../../../img/bg-top-menu.jpg) 1x,
+      url(../../../img/bg-top-menu.jpg) 2x
+    );
+    background-image: -webkit-image-set(
+      url(../../../img/bg-top-menu.jpg) 1x,
+      url(../../../img/bg-top-menu.jpg) 2x
+    );
+  }
 }
 
 .top-menu-body {
-    @include g.mq() {
-        display: flex;
-    }
+  @include g.mq() {
+    display: flex;
+  }
 }
 
 .top-menu-block {
+  @include g.mq() {
+    flex: 1;
+  }
+
+  &:not(:first-child) {
+    margin-top: 40px;
+
     @include g.mq() {
-        flex: 1;
+      margin-top: 0;
+      margin-left: 64px;
     }
-
-    &:not(:first-child) {
-        margin-top: 40px;
-
-        @include g.mq() {
-            margin-top: 0;
-            margin-left: 64px;
-        }
-    }
+  }
 }
 
 .top-menu-list-title {
-    color: var(--color-font-white);
-    font-size: 18px;
-    font-family: var(--font-family-english);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  color: var(--color-font-white);
+  font-size: 18px;
+  font-family: var(--font-family-english);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
-    @include g.mq() {
-        font-size: 20px;
-    }
+  @include g.mq() {
+    font-size: 20px;
+  }
 }
 
 .top-menu-list {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .top-menu-item {
-    color: var(--color-font-white);
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--color-border-white);
-    padding-bottom: 16px;
+  color: var(--color-font-white);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-white);
+  padding-bottom: 16px;
 
-    &:not(:first-child) {
-        padding-top: 16px;
-    }
+  &:not(:first-child) {
+    padding-top: 16px;
+  }
 
-    span {
-        line-height: 1;
-    }
+  span {
+    line-height: 1;
+  }
 }

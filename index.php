@@ -226,7 +226,7 @@ if (file_exists(__DIR__ . '/functions.php')) {
 
           <div class="u-mt">
             <div class="c-posts c-posts--col3">
-              <article class="c-post">
+              <!-- <article class="c-post">
                 <a href="single.html" class="c-post-thumbnail">
                   <img width="600" height="369" srcset="img/thumb-post.jpg 1x, img/thumb-post@2x.jpg 2x"
                     src="img/thumb-post@2x.jpg" alt="〇〇の写真。" decoding="async" loading="lazy" />
@@ -250,9 +250,9 @@ if (file_exists(__DIR__ . '/functions.php')) {
                 <h3 class="c-post-ttl">
                   <a href="single.html">講習会を開催しました。</a>
                 </h3>
-              </article>
+              </article> -->
 
-              <article class="c-post">
+              <!-- <article class="c-post">
                 <a href="single.html" class="c-post-thumbnail">
                   <img width="600" height="369" srcset="img/thumb-post.jpg 1x, img/thumb-post@2x.jpg 2x"
                     src="img/thumb-post@2x.jpg" alt="〇〇の写真。" decoding="async" loading="lazy" />
@@ -263,7 +263,46 @@ if (file_exists(__DIR__ . '/functions.php')) {
                 <h3 class="c-post-ttl">
                   <a href="single.html">講習会を開催しました。</a>
                 </h3>
+              </article> -->
+
+              <?php
+$args = array(
+    'category_name' => 'blog',
+    'posts_per_page' => 12,
+);
+
+$blog_posts = new WP_Query($args);
+
+if ($blog_posts->have_posts()) :
+    while ($blog_posts->have_posts()) : $blog_posts->the_post();
+?>
+              <article class="c-post">
+                <a href="<?php echo get_permalink(); ?>" class="c-post-thumbnail">
+                  <?php
+            $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full'); 
+
+            if ($thumbnail) {
+                $thumbnail_url = $thumbnail[0];
+                echo '<img src="' . esc_url($thumbnail_url) . '" width="250" height="250" alt="..." decoding="async" loading="lazy" style="object-fit: cover; object-position: center center;">';
+            }
+            ?>
+                </a>
+                <div class="c-post-date">
+                  <time datetime="<?php echo get_the_date('Y-m-d'); ?>"
+                    class="c-date"><?php echo get_the_date('Y/m/d'); ?></time>
+                </div>
+                <h2 class="c-post-ttl">
+                  <a href="<?php echo get_category_link(get_the_category()[0]->term_id); ?>"><?php the_title(); ?></a>
+                </h2>
               </article>
+              <?php
+    endwhile;
+    wp_reset_postdata();
+else :
+    echo 'No posts found';
+endif;
+?>
             </div>
           </div>
 

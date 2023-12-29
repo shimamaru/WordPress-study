@@ -99,7 +99,7 @@ if ($blog_posts->have_posts()) :
             <a href="<?php echo get_permalink(); ?>" class="c-post-thumbnail">
               <?php
             $thumbnail_id = get_post_thumbnail_id(get_the_ID());
-            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full'); // 'full' size means original size
+            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full'); 
 
             if ($thumbnail) {
                 $thumbnail_url = $thumbnail[0];
