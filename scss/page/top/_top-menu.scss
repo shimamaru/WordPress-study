@@ -5,29 +5,27 @@ page > top > top-menu
 ------------------------------
 */
 .top-menu {
-  color: gray;
-  // background-color: #000;
-  background-image: url(../../../img/bg-top-menu-sp.jpg);
+  background-image: url(../img/bg-top-menu-sp.jpg);
   background-image: image-set(
-    url(../../../img/bg-top-menu-sp.jpg) 1x,
-    url(../../../img/bg-top-menu-sp.jpg) 2x
+    url(../img/bg-top-menu-sp.jpg) 1x,
+    url(../img/bg-top-menu-sp.jpg) 2x
   );
   background-image: -webkit-image-set(
-    url(../../../img/bg-top-menu-sp.jpg) 1x,
-    url(../../../img/bg-top-menu-sp.jpg) 2x
+    url(../img/bg-top-menu-sp.jpg) 1x,
+    url(../img/bg-top-menu-sp.jpg) 2x
   );
   background-position: center;
   background-size: cover;
 
   @include g.mq() {
-    background-image: url(../../../img/bg-top-menu.jpg);
+    background-image: url(../img/bg-top-menu.jpg);
     background-image: image-set(
-      url(../../../img/bg-top-menu.jpg) 1x,
-      url(../../../img/bg-top-menu.jpg) 2x
+      url(../img/bg-top-menu.jpg) 1x,
+      url(../img/bg-top-menu.jpg) 2x
     );
     background-image: -webkit-image-set(
-      url(../../../img/bg-top-menu.jpg) 1x,
-      url(../../../img/bg-top-menu.jpg) 2x
+      url(../img/bg-top-menu.jpg) 1x,
+      url(../img/bg-top-menu.jpg) 2x
     );
   }
 }

@@ -40,7 +40,8 @@ if (file_exists(__DIR__ . '/functions.php')) {
     rel="stylesheet" />
 
   <!-- css -->
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" />
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
+
 
   <!-- js -->
   <script src="js/main.js" defer></script>
@@ -115,83 +116,65 @@ if (file_exists(__DIR__ . '/functions.php')) {
           <h2 class="c-title-level2 c-title-level2--white c-title-level2--center">menu</h2>
 
           <div class="top-menu-body u-mt">
+
+            <?php
+                $categories = array('drip', 'espresso');
+
+                foreach ($categories as $category) :
+                    $args = array(
+                        'category_name' => 'menu',
+                        'posts_per_page' => -1,
+                    );
+
+                    $blog_posts = new WP_Query($args);
+
+                    if ($blog_posts->have_posts()) :
+                ?>
+
             <section class="top-menu-block">
-              <h3 class="top-menu-list-title">drip</h3>
+              <h3 class="top-menu-list-title"><?php echo esc_html($category); ?></h3>
 
               <ul class="top-menu-list">
+
+                <?php
+                                while ($blog_posts->have_posts()) : $blog_posts->the_post();
+
+                                    $kind_value = get_post_meta(get_the_ID(), 'kind', true);
+
+                                    if ($kind_value === $category) :
+                                ?>
                 <li class="top-menu-item">
-                  <span class="top-menu-item-name">エントランスブレンド</span>
-                  <span class="top-menu-item-price">¥800</span>
+                  <span class="top-menu-item-name"><a
+                      href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></span>
+                  <span
+                    class="top-menu-item-price"><?php echo '¥' . esc_html(get_post_meta(get_the_ID(), 'price', true)); ?></span>
                 </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">エチオピア ウォッシュド</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">エチオピア ナチュラル</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">グアテマラ</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">ブラジル</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">タンザニア</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">フスクブレンド</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
+                <?php
+                                    endif;
+                                endwhile;
+                                wp_reset_postdata();
+                                ?>
+
               </ul>
             </section>
 
-            <section class="top-menu-block">
-              <h3 class="top-menu-list-title">espresso</h3>
+            <?php else : ?>
+            <p>No posts found in the '<?php echo esc_html($category); ?>' category</p>
+            <?php endif; ?>
 
-              <ul class="top-menu-list">
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">エントランスブレンド</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">エチオピア ウォッシュド</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">エチオピア ナチュラル</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">グアテマラ</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">ブラジル</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">タンザニア</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-                <li class="top-menu-item">
-                  <span class="top-menu-item-name">フスクブレンド</span>
-                  <span class="top-menu-item-price">¥800</span>
-                </li>
-              </ul>
-            </section>
+            <?php endforeach; ?>
+
+
           </div>
 
           <div class="u-mt">
             <a href="menu.html" class="c-button c-button--white c-button--center">more</a>
           </div>
+
         </div>
       </div>
     </section>
+
     <!-- end top-menu -->
 
     <!-- top-shoplist -->
