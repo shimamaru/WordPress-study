@@ -202,12 +202,27 @@ if (file_exists(__DIR__ . '/functions.php')) {
 
         <div class="u-mt">
           <ul class="top-shoplist-list">
-            <li class="top-shoplist-item">北千住店</li>
-            <li class="top-shoplist-item">代官山店</li>
-            <li class="top-shoplist-item">新宿店</li>
-            <li class="top-shoplist-item">八王子店</li>
-            <li class="top-shoplist-item">銀座店</li>
-            <li class="top-shoplist-item">渋谷店</li>
+            <?php
+    $args = array(
+        'category_name' => 'shoplist',
+        'posts_per_page' => 6,
+    );
+
+    $shop_posts = new WP_Query($args);
+
+    if ($shop_posts->have_posts()) :
+        while ($shop_posts->have_posts()) : $shop_posts->the_post();
+    ?>
+            <li class="top-shoplist-item">
+              <?php the_title(); ?>
+            </li>
+            <?php
+        endwhile;
+        wp_reset_postdata();
+    else :
+        echo 'No posts found';
+    endif;
+    ?>
           </ul>
         </div>
 
@@ -268,7 +283,7 @@ if (file_exists(__DIR__ . '/functions.php')) {
               <?php
 $args = array(
     'category_name' => 'blog',
-    'posts_per_page' => 12,
+    'posts_per_page' => 3,
 );
 
 $blog_posts = new WP_Query($args);
