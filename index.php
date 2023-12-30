@@ -85,7 +85,32 @@ if (file_exists(__DIR__ . '/functions.php')) {
 
   <main>
     <!-- top-kv -->
-    <div class="top-kv"></div>
+    <?php
+$args = array(
+    'category_name' => 'kv',  // カテゴリースラッグ
+    'posts_per_page' => 1,    // 取得する投稿の数
+    'order' => 'DESC',        // 投稿の順序（DESC: 新しい順）
+    'orderby' => 'date'       // 投稿の順序を日付で指定
+);
+
+$recent_posts = new WP_Query($args);
+
+if ($recent_posts->have_posts()) :
+    while ($recent_posts->have_posts()) : $recent_posts->the_post();
+
+        // 投稿のサムネイル画像を取得
+        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
+        // サムネイル画像を背景画像として指定
+        echo '<div class="top-kv" style="background-image: url(' . esc_url($thumbnail_url) . ');"></div>';
+
+    endwhile;
+    wp_reset_postdata(); // クエリのリセット
+else :
+    echo 'No posts found';
+endif;
+?>
+
     <!-- end top-kv -->
 
     <!-- top-consept -->
@@ -94,8 +119,8 @@ if (file_exists(__DIR__ . '/functions.php')) {
         <h2 class="c-title-level2 c-title-level2--center">consept</h2>
         <div class="u-mt">
           <div class="top-consept-img">
-            <img width="1920" height="954" srcset="img/pic-top-consept.jpg 960w, img/pic-top-consept@2x.jpg 1920w"
-              sizes="(max-width: 767px) 90vw, 960px" src="img/pic-top-consept@2x.jpg" alt="" decoding="async"
+            <img width="1920" height="954" srcset="./img/pic-top-consept.jpg 960w, ./img/pic-top-consept@2x.jpg 1920w"
+              sizes="(max-width: 767px) 90vw, 960px" src="./img/pic-top-consept@2x.jpg" alt="" decoding="async"
               loading="lazy" />
           </div>
           <p class="top-consept-text u-mt">一杯一杯まごころをこめて調製し、新鮮な香りと豊かな風味のコーヒーを提供します。</p>
