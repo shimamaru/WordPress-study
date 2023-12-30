@@ -56,8 +56,9 @@ if (file_exists(__DIR__ . '/functions.php')) {
       </a>
     </h1>
 
-    <a href="https://www.google.com/" class="header-onlineshop" target="_blank" rel="noopener noreferrer">online
-      shop</a>
+    <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="header-onlineshop"
+      target="_blank" rel="noopener noreferrer">online shop</a>
+
 
     <nav class="header-nav">
       <ul class="header-list">
