@@ -2,10 +2,12 @@
 <footer class="footer">
   <div class="l-container">
     <div class="footer-logo">
-      <a href="index.html">
-        <img src="img/logo-white.svg" width="200" height="26" alt="supple" decoding="async" loading="lazy" />
+      <a href="<?php echo esc_url(home_url('/')); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/logo-white.svg" width="200" height="26" alt="supple"
+          decoding="async" loading="lazy" />
       </a>
     </div>
+
 
     <nav class="footer-shop-nav">
       <ul class="footer-shop-list">

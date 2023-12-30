@@ -35,10 +35,14 @@ endif;
       <h2 class="c-title-level2 c-title-level2--center">consept</h2>
       <div class="u-mt">
         <div class="top-consept-img">
-          <img width="1920" height="954" srcset="./img/pic-top-consept.jpg 960w, ./img/pic-top-consept@2x.jpg 1920w"
-            sizes="(max-width: 767px) 90vw, 960px" src="./img/pic-top-consept@2x.jpg" alt="" decoding="async"
+          <?php
+  $image_url = get_template_directory_uri() . '/img/pic-top-consept@2x.jpg'; // 画像のパスを修正
+  ?>
+          <img width="1920" height="954" srcset="<?php echo $image_url; ?> 960w, <?php echo $image_url; ?> 1920w"
+            sizes="(max-width: 767px) 90vw, 960px" src="<?php echo $image_url; ?>" alt="" decoding="async"
             loading="lazy" />
         </div>
+
         <p class="top-consept-text u-mt">一杯一杯まごころをこめて調製し、新鮮な香りと豊かな風味のコーヒーを提供します。</p>
         <p class="top-consept-text02">
           <span>親譲りの無鉄砲で小供の時から損ばかりしている。</span><span>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</span><span>なぜそんな無闇をしたと聞く人があるかも知れぬ。</span>
@@ -166,44 +170,6 @@ endif;
 
         <div class="u-mt">
           <div class="c-posts c-posts--col3">
-            <!-- <article class="c-post">
-                <a href="single.html" class="c-post-thumbnail">
-                  <img width="600" height="369" srcset="img/thumb-post.jpg 1x, img/thumb-post@2x.jpg 2x"
-                    src="img/thumb-post@2x.jpg" alt="〇〇の写真。" decoding="async" loading="lazy" />
-                </a>
-                <div class="c-post-date">
-                  <time datetime="2021-01-01" class="c-date">2021/01/01</time>
-                </div>
-                <h3 class="c-post-ttl">
-                  <a href="single.html">講習会を開催しました。</a>
-                </h3>
-              </article>
-
-              <article class="c-post">
-                <a href="single.html" class="c-post-thumbnail">
-                  <img width="600" height="369" srcset="img/thumb-post.jpg 1x, img/thumb-post@2x.jpg 2x"
-                    src="img/thumb-post@2x.jpg" alt="〇〇の写真。" decoding="async" loading="lazy" />
-                </a>
-                <div class="c-post-date">
-                  <time datetime="2021-01-01" class="c-date">2021/01/01</time>
-                </div>
-                <h3 class="c-post-ttl">
-                  <a href="single.html">講習会を開催しました。</a>
-                </h3>
-              </article> -->
-
-            <!-- <article class="c-post">
-                <a href="single.html" class="c-post-thumbnail">
-                  <img width="600" height="369" srcset="img/thumb-post.jpg 1x, img/thumb-post@2x.jpg 2x"
-                    src="img/thumb-post@2x.jpg" alt="〇〇の写真。" decoding="async" loading="lazy" />
-                </a>
-                <div class="c-post-date">
-                  <time datetime="2021-01-01" class="c-date">2021/01/01</time>
-                </div>
-                <h3 class="c-post-ttl">
-                  <a href="single.html">講習会を開催しました。</a>
-                </h3>
-              </article> -->
 
             <?php
 $args = array(
@@ -259,37 +225,40 @@ endif;
     <h2 class="c-title-level2 c-title-level2--center">instagram</h2>
 
     <ul class="c-instagram-list">
+      <?php
+  $args = array(
+    'category_name' => 'blog',  // カテゴリースラッグ
+    'posts_per_page' => 6,      // 取得する投稿の数
+    'orderby' => 'rand'         // ランダムで記事を表示
+  );
+
+  $blog_posts = new WP_Query($args);
+
+  if ($blog_posts->have_posts()) :
+    while ($blog_posts->have_posts()) : $blog_posts->the_post();
+      ?>
       <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post.jpg 201w, img/pic-instagram-post@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
+        <a href="<?php echo get_permalink(); ?>" class="c-post-thumbnail">
+          <?php
+          $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+          $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+
+          if ($thumbnail) {
+            $thumbnail_url = $thumbnail[0];
+            echo '<img src="' . esc_url($thumbnail_url) . '" width="402" height="402" alt="' . esc_attr(get_the_title()) . '" decoding="async" loading="lazy" />';
+          }
+          ?>
+        </a>
       </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post02.jpg 201w, img/pic-instagram-post02@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post02@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post03.jpg 201w, img/pic-instagram-post03@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post03@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post04.jpg 201w, img/pic-instagram-post04@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post04@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post05.jpg 201w, img/pic-instagram-post05@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post05@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post06.jpg 201w, img/pic-instagram-post06@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post06@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
+      <?php
+    endwhile;
+    wp_reset_postdata(); // クエリのリセット
+  else :
+    echo 'No posts found';
+  endif;
+  ?>
     </ul>
+
 
     <div class="c-instagram-button">
       <a href="https://www.instagram.com/?hl=ja" target="_blank" rel="noopener noreferrer"

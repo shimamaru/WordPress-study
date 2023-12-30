@@ -51,10 +51,13 @@ if (file_exists(__DIR__ . '/functions.php')) {
   <!-- header -->
   <header class="header">
     <h1 class="header-logo">
-      <a href="index.html">
-        <img src="img/logo.svg" width="200" height="26" alt="supple" decoding="async" loading="lazy" />
+      <a href="<?php echo esc_url(home_url('/')); ?>">
+        <!-- home_url関数を使用してトップページのURLを取得 -->
+        <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" width="200" height="26" alt="supple"
+          decoding="async" loading="lazy" />
       </a>
     </h1>
+
 
     <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="header-onlineshop"
       target="_blank" rel="noopener noreferrer">online shop</a>

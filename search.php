@@ -1,48 +1,36 @@
 <?php get_header(); ?>
 
 <main>
-  <!-- page-kv -->
-  <div class="c-page-kv c-page-kv--shoplist">
-    <div class="l-container-l">
-      <h1 class="c-title-level1 c-title-level1--white">shoplist</h1>
-    </div>
-  </div>
-  <!-- end page-kv -->
 
   <!-- shoplist -->
   <div class="u-ptb">
     <div class="l-container-l">
-      <!-- serach -->
+
+      <!-- search -->
       <form role="search" method="get" id="searchform" action="<?php echo home_url('/'); ?>" class="c-search-form">
-        <label for="s" class="screen-reader-text"><?php _e('', 'my-theme'); ?></label>
+        <label for="s" class="screen-reader-text"><?php _e('Search for:', 'my-theme'); ?></label>
         <input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s"
-          placeholder="<?php _e('検索', 'my-theme'); ?>" class="c-search-input" />
-        <button type="submit" id="searchsubmit" class="c-search-submit"><?php _e('検索', 'my-theme'); ?></button>
+          placeholder="<?php _e('Search...', 'my-theme'); ?>" class="c-search-input" />
+        <button type="submit" id="searchsubmit" class="c-search-submit"><?php _e('Search', 'my-theme'); ?></button>
       </form>
+      <!-- end search  -->
 
       <div class="shoplist-list">
         <?php
-$args = array(
-    'category_name' => 'shoplist',
-    'posts_per_page' => 12,
-);
-
-$shop_posts = new WP_Query($args);
-
-if ($shop_posts->have_posts()) :
-    while ($shop_posts->have_posts()) : $shop_posts->the_post();
-?>
+                if (have_posts()) :
+                    while (have_posts()) : the_post();
+                ?>
         <section class="shoplist-item">
           <div class="shoplist-item-img" class="c-post-thumbnail">
             <?php
-                $thumbnail_id = get_post_thumbnail_id(get_the_ID());
-                $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+                                $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+                                $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
 
-                if ($thumbnail) {
-                    $thumbnail_url = $thumbnail[0];
-                    echo '<img src="' . esc_url($thumbnail_url) . '" width="648" height="410" alt="..." decoding="async" loading="lazy" style="object-fit: cover; object-position: center center;">';
-                }
-                ?>
+                                if ($thumbnail) {
+                                    $thumbnail_url = $thumbnail[0];
+                                    echo '<img src="' . esc_url($thumbnail_url) . '" width="648" height="410" alt="..." decoding="async" loading="lazy" style="object-fit: cover; object-position: center center;">';
+                                }
+                                ?>
           </div>
 
           <div class="shoplist-item-info">
@@ -52,47 +40,46 @@ if ($shop_posts->have_posts()) :
 
             <p class="shoplist-item-address">
               <?php
-                $address = get_post_meta(get_the_ID(), 'shop_address', true);
-                echo esc_html($address);
-                ?>
+                                    $address = get_post_meta(get_the_ID(), 'shop_address', true);
+                                    echo esc_html($address);
+                                    ?>
             </p>
             <p class="shoplist-item-tel">
               <?php
-                $tel = get_post_meta(get_the_ID(), 'shop_tel', true);
-                echo esc_html($tel);
-                ?>
+                                    $tel = get_post_meta(get_the_ID(), 'shop_tel', true);
+                                    echo esc_html($tel);
+                                    ?>
             </p>
 
             <ul class="shoplist-item-detail">
               <li class="shoplist-item-detail-item">
                 <?php
-                    $hours = get_post_meta(get_the_ID(), 'shop_hours', true);
-                    echo esc_html('営業時間／' . $hours);
-                    ?>
+                                        $hours = get_post_meta(get_the_ID(), 'shop_hours', true);
+                                        echo esc_html('営業時間／' . $hours);
+                                        ?>
               </li>
               <li class="shoplist-item-detail-item">
                 <?php
-                    $seats = get_post_meta(get_the_ID(), 'shop_seats', true);
-                    echo esc_html('席数／' . $seats);
-                    ?>
+                                        $seats = get_post_meta(get_the_ID(), 'shop_seats', true);
+                                        echo esc_html('席数／' . $seats);
+                                        ?>
               </li>
               <li class="shoplist-item-detail-item">
                 <?php
-                    $smoking = get_post_meta(get_the_ID(), 'shop_smoking', true);
-                    echo esc_html('喫煙／' . $smoking);
-                    ?>
+                                        $smoking = get_post_meta(get_the_ID(), 'shop_smoking', true);
+                                        echo esc_html('喫煙／' . $smoking);
+                                        ?>
               </li>
             </ul>
           </div>
         </section>
         <?php
-    endwhile;
-    wp_reset_postdata();
-else :
-    echo 'No posts found';
-endif;
-?>
-
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    echo 'No posts found';
+                endif;
+                ?>
       </div>
     </div>
   </div>
