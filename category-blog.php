@@ -79,37 +79,40 @@ endif;
     <h2 class="c-title-level2 c-title-level2--center">instagram</h2>
 
     <ul class="c-instagram-list">
+      <?php
+  $args = array(
+    'category_name' => 'blog',  // カテゴリースラッグ
+    'posts_per_page' => 6,      // 取得する投稿の数
+    'orderby' => 'rand'         // ランダムで記事を表示
+  );
+
+  $blog_posts = new WP_Query($args);
+
+  if ($blog_posts->have_posts()) :
+    while ($blog_posts->have_posts()) : $blog_posts->the_post();
+      ?>
       <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post.jpg 201w, img/pic-instagram-post@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
+        <a href="<?php echo get_permalink(); ?>" class="c-post-thumbnail">
+          <?php
+          $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+          $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+
+          if ($thumbnail) {
+            $thumbnail_url = $thumbnail[0];
+            echo '<img src="' . esc_url($thumbnail_url) . '" width="402" height="402" alt="' . esc_attr(get_the_title()) . '" decoding="async" loading="lazy" />';
+          }
+          ?>
+        </a>
       </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post02.jpg 201w, img/pic-instagram-post02@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post02@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post03.jpg 201w, img/pic-instagram-post03@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post03@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post04.jpg 201w, img/pic-instagram-post04@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post04@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post05.jpg 201w, img/pic-instagram-post05@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post05@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
-      <li class="c-instagram-item">
-        <img width="402" height="402" srcset="img/pic-instagram-post06.jpg 201w, img/pic-instagram-post06@2x.jpg 402w"
-          sizes="(max-width: 767px) 30vw, (max-width: 1719px) 17vw, 260px" src="img/pic-instagram-post06@2x.jpg"
-          alt="〇〇の写真" decoding="async" loading="lazy" />
-      </li>
+      <?php
+    endwhile;
+    wp_reset_postdata(); // クエリのリセット
+  else :
+    echo 'No posts found';
+  endif;
+  ?>
     </ul>
+
 
     <div class="c-instagram-button">
       <a href="https://www.instagram.com/?hl=ja" target="_blank" rel="noopener noreferrer"
