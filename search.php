@@ -19,18 +19,24 @@
         <?php
                 if (have_posts()) :
                     while (have_posts()) : the_post();
+
+                        // カスタムフィールド "area" の値を取得
+                        $area_value = get_post_meta(get_the_ID(), 'area', true);
+
+                        // セレクトボックスで選択されたエリアと一致する場合に表示
+                        if ($area_value === get_query_var('area')) :
                 ?>
         <section class="shoplist-item">
           <div class="shoplist-item-img" class="c-post-thumbnail">
             <?php
-                                $thumbnail_id = get_post_thumbnail_id(get_the_ID());
-                                $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+                                    $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+                                    $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
 
-                                if ($thumbnail) {
-                                    $thumbnail_url = $thumbnail[0];
-                                    echo '<img src="' . esc_url($thumbnail_url) . '" width="648" height="410" alt="..." decoding="async" loading="lazy" style="object-fit: cover; object-position: center center;">';
-                                }
-                                ?>
+                                    if ($thumbnail) {
+                                        $thumbnail_url = $thumbnail[0];
+                                        echo '<img src="' . esc_url($thumbnail_url) . '" width="648" height="410" alt="..." decoding="async" loading="lazy" style="object-fit: cover; object-position: center center;">';
+                                    }
+                                    ?>
           </div>
 
           <div class="shoplist-item-info">
@@ -40,40 +46,41 @@
 
             <p class="shoplist-item-address">
               <?php
-                                    $address = get_post_meta(get_the_ID(), 'shop_address', true);
-                                    echo esc_html($address);
-                                    ?>
+                                        $address = get_post_meta(get_the_ID(), 'shop_address', true);
+                                        echo esc_html($address);
+                                        ?>
             </p>
             <p class="shoplist-item-tel">
               <?php
-                                    $tel = get_post_meta(get_the_ID(), 'shop_tel', true);
-                                    echo esc_html($tel);
-                                    ?>
+                                        $tel = get_post_meta(get_the_ID(), 'shop_tel', true);
+                                        echo esc_html($tel);
+                                        ?>
             </p>
 
             <ul class="shoplist-item-detail">
               <li class="shoplist-item-detail-item">
                 <?php
-                                        $hours = get_post_meta(get_the_ID(), 'shop_hours', true);
-                                        echo esc_html('営業時間／' . $hours);
-                                        ?>
+                                            $hours = get_post_meta(get_the_ID(), 'shop_hours', true);
+                                            echo esc_html('営業時間／' . $hours);
+                                            ?>
               </li>
               <li class="shoplist-item-detail-item">
                 <?php
-                                        $seats = get_post_meta(get_the_ID(), 'shop_seats', true);
-                                        echo esc_html('席数／' . $seats);
-                                        ?>
+                                            $seats = get_post_meta(get_the_ID(), 'shop_seats', true);
+                                            echo esc_html('席数／' . $seats);
+                                            ?>
               </li>
               <li class="shoplist-item-detail-item">
                 <?php
-                                        $smoking = get_post_meta(get_the_ID(), 'shop_smoking', true);
-                                        echo esc_html('喫煙／' . $smoking);
-                                        ?>
+                                            $smoking = get_post_meta(get_the_ID(), 'shop_smoking', true);
+                                            echo esc_html('喫煙／' . $smoking);
+                                            ?>
               </li>
             </ul>
           </div>
         </section>
         <?php
+                        endif;
                     endwhile;
                     wp_reset_postdata();
                 else :
@@ -90,39 +97,38 @@
 
     <ul class="c-instagram-list">
       <?php
-  $args = array(
-    'category_name' => 'blog',  // カテゴリースラッグ
-    'posts_per_page' => 6,      // 取得する投稿の数
-    'orderby' => 'rand'         // ランダムで記事を表示
-  );
+            $args = array(
+                'category_name' => 'blog',  // カテゴリースラッグ
+                'posts_per_page' => 6,      // 取得する投稿の数
+                'orderby' => 'rand'         // ランダムで記事を表示
+            );
 
-  $blog_posts = new WP_Query($args);
+            $blog_posts = new WP_Query($args);
 
-  if ($blog_posts->have_posts()) :
-    while ($blog_posts->have_posts()) : $blog_posts->the_post();
-      ?>
+            if ($blog_posts->have_posts()) :
+                while ($blog_posts->have_posts()) : $blog_posts->the_post();
+            ?>
       <li class="c-instagram-item">
         <a href="<?php echo get_permalink(); ?>" class="c-post-thumbnail">
           <?php
-          $thumbnail_id = get_post_thumbnail_id(get_the_ID());
-          $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
+                            $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+                            $thumbnail = wp_get_attachment_image_src($thumbnail_id, 'full');
 
-          if ($thumbnail) {
-            $thumbnail_url = $thumbnail[0];
-            echo '<img src="' . esc_url($thumbnail_url) . '" width="402" height="402" alt="' . esc_attr(get_the_title()) . '" decoding="async" loading="lazy" />';
-          }
-          ?>
+                            if ($thumbnail) {
+                                $thumbnail_url = $thumbnail[0];
+                                echo '<img src="' . esc_url($thumbnail_url) . '" width="402" height="402" alt="' . esc_attr(get_the_title()) . '" decoding="async" loading="lazy" />';
+                            }
+                            ?>
         </a>
       </li>
       <?php
-    endwhile;
-    wp_reset_postdata(); // クエリのリセット
-  else :
-    echo 'No posts found';
-  endif;
-  ?>
+                endwhile;
+                wp_reset_postdata(); // クエリのリセット
+            else :
+                echo 'No posts found';
+            endif;
+            ?>
     </ul>
-
 
     <div class="c-instagram-button">
       <a href="https://www.instagram.com/?hl=ja" target="_blank" rel="noopener noreferrer"

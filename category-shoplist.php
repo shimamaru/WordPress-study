@@ -12,14 +12,6 @@
   <!-- shoplist -->
   <div class="u-ptb">
     <div class="l-container-l">
-      <!-- serach -->
-      <form role="search" method="get" id="searchform" action="<?php echo home_url('/'); ?>" class="c-search-form">
-        <label for="s" class="screen-reader-text"><?php _e('', 'my-theme'); ?></label>
-        <input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s"
-          placeholder="<?php _e('検索', 'my-theme'); ?>" class="c-search-input" />
-        <button type="submit" id="searchsubmit" class="c-search-submit"><?php _e('検索', 'my-theme'); ?></button>
-      </form>
-
       <div class="shoplist-list">
         <?php
 $args = array(
