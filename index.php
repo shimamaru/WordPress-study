@@ -93,7 +93,9 @@ endif;
                 <span class="top-menu-item-name"><a
                     href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></span>
                 <span
-                  class="top-menu-item-price"><?php echo '¥' . esc_html(get_post_meta(get_the_ID(), 'price', true)); ?></span>
+                  class="top-menu-item-price"><?php echo '¥' . esc_html(get_post_meta(get_the_ID(), 'price', true)); ?>
+
+                </span>
               </li>
               <?php
                                     endif;

@@ -13,6 +13,11 @@
   <div class="u-ptb">
     <div class="l-container-l">
       <div class="shoplist-list">
+
+        <?php
+// do_shortcode 関数を使ってショートコードを呼び出す
+echo do_shortcode('[searchandfilter fields="search,category,post_tag"]');
+?>
         <?php
 $args = array(
     'category_name' => 'shoplist',
@@ -39,7 +44,7 @@ if ($shop_posts->have_posts()) :
 
           <div class="shoplist-item-info">
             <h2 class="shoplist-item-name">
-              <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
+              <?php the_title(); ?>
             </h2>
 
             <p class="shoplist-item-address">
