@@ -12,12 +12,11 @@
   <!-- shoplist -->
   <div class="u-ptb">
     <div class="l-container-l">
+      <!-- searchFormからフォームを取得 -->
+      <?php get_search_form(); ?>
+
       <div class="shoplist-list">
 
-        <?php
-// do_shortcode 関数を使ってショートコードを呼び出す
-echo do_shortcode('[searchandfilter fields="search,category,post_tag"]');
-?>
         <?php
 $args = array(
     'category_name' => 'shoplist',

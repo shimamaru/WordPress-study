@@ -1,0 +1,41 @@
+@use "../global" as g;
+
+.search {
+  max-width: 500px;
+  height: 50px;
+}
+
+.search-form {
+  display: flex;
+}
+
+.search-form > * {
+  flex: 0 0 auto;
+}
+
+.search-form > :nth-child(1) {
+  flex: 6;
+}
+
+.search-form > :nth-child(2) {
+  flex: 3;
+}
+
+.search-form > :nth-child(3) {
+  flex: 1;
+}
+
+.search-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  color: var(--color-font-base);
+}
+
+.search-button {
+  background-color: var(--color-font-base);
+  color: var(--color-font-white);
+}

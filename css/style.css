@@ -37,7 +37,7 @@ component > posts
 */.c-posts{display:grid;gap:40px 30px;grid-template-columns:repeat(1, 1fr)}@media screen and (min-width: 500px){.c-posts--col3{grid-template-columns:repeat(2, 1fr)}}@media screen and (min-width: 768px){.c-posts--col3{grid-template-columns:repeat(3, 1fr);gap:48px 30px}}/*!
 component > post
 ------------------------------
-*/.c-post-thumbnail{display:block;position:relative;padding-top:100%}.c-post-thumbnail img{position:absolute;width:100%;height:100%;object-fit:cover;top:0;left:0}.c-post-date{margin-top:16px}.c-post-ttl{margin-top:4px;font-size:18px}@media screen and (min-width: 768px){.c-post-ttl{font-size:22px}}/*!
+*/.c-post-thumbnail{display:block;position:relative}.c-post-thumbnail img{position:absolute;width:100%;height:100%;object-fit:cover;top:0;left:0}.c-post-date{margin-top:16px}.c-post-ttl{margin-top:4px;font-size:18px}@media screen and (min-width: 768px){.c-post-ttl{font-size:22px}}/*!
 component > instagram
 ------------------------------
 */.c-instagram{background-color:var(--color-bg-secondary)}.c-instagram-list{display:grid;gap:8px;grid-template-columns:repeat(3, minmax(auto, 260px));margin-top:40px;justify-content:center}@media screen and (min-width: 768px){.c-instagram-list{margin:48px auto 0;grid-template-columns:repeat(6, minmax(auto, 260px))}}@media screen and (min-width: 1080px){.c-instagram-list{gap:32px}}.c-instagram-button{margin-top:40px}@media screen and (min-width: 768px){.c-instagram-button{margin-top:48px}}/*!
