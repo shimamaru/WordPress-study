@@ -2,6 +2,15 @@
 get_header();
 ?>
 
+
+<!-- page-kv -->
+<div class="c-page-kv c-page-kv--shoplist">
+  <div class="l-container-l">
+    <h1 class="c-title-level1 c-title-level1--white">shoplist</h1>
+  </div>
+</div>
+<!-- end page-kv -->
+
 <div class="u-ptb">
   <div class="l-container-l">
     <?php get_search_form(); ?>
